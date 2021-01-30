@@ -1,1 +1,42 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unilag</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      #map {
+        height: 800px;
+        width: 100%;
+      }
+      body {
+        background-color: aliceblue;
+
+      }
+    </style>
+    <script>
+      function initMap() {
+        // The location of Unilag
+        const Unilag = { lat: 6.5157, lng: 3.3899 };
+        // The map, centered at Unilag
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: Unilag,
+        });
+        // The marker, positioned at Unilag
+        const marker = new google.maps.Marker({
+          position: Unilag,
+          map: map,
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h2>University of Lagos</h2>
+    <!--The div element for the map -->
+    <div id="map"></div>
+  </body>
+</html>
