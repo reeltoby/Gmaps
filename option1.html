@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UEFA Champions League</title>
+  <style>
+    #map{
+      height:800px;
+      width:100%;
+    }
+  
+    body {
+      margin: 0 20%;
+      font-family: Arial, Verdana, sans-serif;
+      background-color: #e6f7ff;
+      
+    }
+    h1 {
+        text-align:center;
+      background-color : #99ccff;
+    }
+    
+    
+  </style>
+</head>
+<body>
+
+  <h1>UEFA Champions League Finals Host Stadiums, since 1992</h1>
+  <p>The markers in green are soccer venues that have hosted the prestigious finals once. 
+    The markers in red are the venues that have hosted the finals more than once 
+   Each marker onnce clicked, pops up more information about the soccer venue, its capacity and host year(s)</p>
+  <div id="map"></div>
+  
+  <script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:5,
+        center:{lat:48.1731,lng:11.5466}
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Listen for click on map
+      google.maps.event.addListener(map, 'click', function(event){
+        // Add marker
+       
+      });
+
+     
+      // Array of markers
+      var markers = [
+        {
+          coords:{lat:48.1731,lng:11.5466},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>Olympiastadion, Munich, Germany</h1> <p> Hosted 1993 and 1997 Finals</p> <p>Stadium Capacity: 69,250</p>'
+          
+        },
+        {
+          coords:{lat:38.036781,lng:23.786452},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>OACA Spyros Louis, Athens, Greece</h1> <p> Hosted 1994 and 2007 Final</p> <p>Stadium Capacity: 75,000</p>'
+          
+
+        },
+        {
+          coords:{lat:48.2072,lng:16.4210},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Ernst-Happel-Stadion, Vienna, Austria</h1> <p> Hosted 1995 Final</p><p>Stadium Capacity: 75,000</p>'
+        },
+        {
+          coords:{lat:41.9341,lng:12.4547},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>Stadio Olimpico, Rome, Italy</h1> <p> Hosted 1996 and 2009 Final</p><p>Stadium Capacity: 72,698</p>'
+        },
+        {
+          coords:{lat:52.3144,lng:4.9420},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Johan Cruijff ArenA, Amsterdam, Holland</h1> <p> Hosted 1998 Final</p><p>Stadium Capacity: 55,500</p>'
+        },
+        {
+          coords:{lat:41.3809,lng:2.1228},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Camp Nou, Barcelona, Spain</h1> <p> Hosted 1999 Final</p><p>Stadium Capacity: 99,354</p>'
+                                    
+        },
+        {
+          coords:{lat:48.9245,lng:2.3602},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>Stade de France, Saint-Denis, France</h1> <p> Hosted the 2000 and 2006 Finals</p><p>Stadium Capacity: 81,338</p>'
+        },
+        {
+          coords:{lat:45.4781,lng:9.1240},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>Stadio San Siro, Milan, Italy</h1> <p> Hosted 2001 and 2016 Final</p><p>Stadium Capacity: 80,018</p>'
+        },
+        {
+          coords:{lat:55.825864,lng:-4.252003},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Hampden Park, Glasgow , Scotland</h1> <p> Hosted 2002 Final</p><p>Stadium Capacity: 51,866</p>'
+        },
+        {
+          coords:{lat:53.460863,lng: -2.283614,},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Old Trafford, Manchester, England</h1> <p> Hosted 2003 Final</p><p>Stadium Capacity: 76,000</p>'
+        },
+        {
+          coords:{lat:51.5546,lng:7.0675},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Arena Auf Schalke, Gelsenkirchen, Germany</h1> <p> Hosted 2004 Final</p><p>Stadium Capacity: 62,271</p>'
+        },
+        {
+          coords:{lat:41.0744,lng:28.7656},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Atatürk Olimpiyat Stadı, Istanbul, Turkey</h1> <p> Hosted 2005 Final</p><p>Stadium Capacity: 76,092</p>'
+        },
+        {
+          coords:{lat:55.7158,lng:37.5537},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Luzhniki Stadium, Moscow, Russia</h1> <p> Hosted 2008 Final</p><p>Stadium Capacity: 81,000</p>'
+        },
+        {
+          coords:{lat:40.4530,lng: -3.6883},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Estadio Santiago Bernabéu, Madrid, Spain</h1> <p> Hosted 2010 Final</p><p>Stadium Capacity: 81,044</p>'
+        },
+        {
+          coords:{lat:51.555702,lng: -0.276204},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>Wembley Stadium, London , England</h1><p> Hosted 2011 and 2013 Final</p> <p>Stadium Capacity: 90,000</p>'
+        },
+        {
+          coords:{lat:48.2188,lng:11.6248},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Allianz Arena Munich, Munich, Germany</h1> <p> Hosted 2012 Final</p><p>Stadium Capacity: 75,024</p>'
+        },
+        {
+          coords:{lat:38.7516,lng:-9.1841},
+          iconImage:'http://maps.google.com/mapfiles/kml/pal2/icon57.png',
+          content:'<h1>Estádio do Sport Lisboa e Benfica, Lisbon, Portugal</h1> <p> Hosted 2014 and 2020 Final</p><p>Stadium Capacity: 65,647</p>'
+        },
+        {
+          coords:{lat:52.5147,lng:13.2395},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Olympiastadion, Berlin, Germany</h1> <p> Hosted 2015 Final</p><p>Stadium Capacity: 74,475</p>'
+        },
+        {
+          coords:{lat:51.4782,lng: -3.1826},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Principality Stadium, Cardiff, Wales</h1> <p> Hosted 2017 Final</p><p>Stadium Capacity: 74,500</p>'
+        },
+        {
+          coords:{lat:50.4334,lng:30.5219},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>NSK Olimpiyskyi, Kyiv, Ukraine</h1> <p> Hosted 2018 Final</p><p>Stadium Capacity: 70,050</p>'
+        },
+        {
+          coords:{lat:40.4362,lng:-3.5995},
+          iconImage:'http://maps.google.com/mapfiles/kml/shapes/play.png',
+          content:'<h1>Estadio Metropolitano, Madrid, Spain</h1> <p> Hosted 2019 Final</p><p>Stadium Capacity: 68,456</p>'
+        },
+      ];
+
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5a1FoKmbmQ1djPh6pRx7oiknBf3ACNOE&callback=initMap">
+    </script>
+</body>
+</html>
